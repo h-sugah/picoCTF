@@ -11,7 +11,7 @@ I found this cipher in an old book. Can you figure out what it says? Connect wit
 <br>
 
 ## 解答の過程
-問題文で指示されているサイトにncコマンドでアクセスすると、何かの文章のようなテキストが出力される。
+問題文で指示されているサイトにncコマンドでアクセスすると、何かの文章のようなテキストが出力される。  
 
 ```
 > nc jupiter.challenges.picoctf.org 32411
@@ -44,11 +44,13 @@ hgqqpohzCZK{m311a50_0x_a1rn3x3_h1ah3x7g996649}
 そこで、[CyberChef](https://gchq.github.io/CyberChef/)を利用して変換させてみる。  
 ROT13のレシピでブルートフォースを試してみても、特にフラグになるような文字列が得られなかった。  
 そのため、ヴィジュネル暗号と考えて変換させてみる。  
-
+<br>
 1文字目がpで、5文字目がCなので、4文字の周期性があるので、暗号キーは4文字だと判断できる。  
-
+<br>
 [CyberChef](https://gchq.github.io/CyberChef/)のVigenere Decodeを利用し、1文字ずつ入力して文字列の変化を確認していくと、キーが「agfl」で以下のような文字列になった。  
 
+<br>
+<br>
 <br>
 <br>
 
@@ -56,6 +58,8 @@ ROT13のレシピでブルートフォースを試してみても、特にフラ
 picoCTF{b311a50_0r_v1gn3r3_c1ph3r7b996649}
 ```
 
+<br>
+<br>
 <br>
 <br>
 
