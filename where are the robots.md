@@ -10,15 +10,17 @@ Can you find the robots? https://jupiter.challenges.picoctf.org/problem/60915/ (
 <br>
 <br>
 
-## 解答の過程
-
 問題文に記載されているリンクからページを開くと、シンプルなWelcomeページが表示される。  
 そのページには、「Where are the robots?」と記述されている。  
 robotsを見つければ、フラグが得られると推測できる。  
 <br>
 robotsは、ブラウザーのURL欄に、robots.txtを入力することで参照できる。  
 <br>
-ここでは、https://jupiter.challenges.picoctf.org/problem/60915/にアクセスしたので、https://jupiter.challenges.picoctf.org/problem/60915/robots.txtと記述することでrobots.txtの内容を確認できる。  
+ここでは、  
+https://jupiter.challenges.picoctf.org/problem/60915/  
+にアクセスしたので、  
+https://jupiter.challenges.picoctf.org/problem/60915/robots.txt  
+と記述することでrobots.txtの内容を確認できる。  
 <br>
 robots.txtには、以下のように記述されていた。  
 ```
@@ -27,7 +29,8 @@ Disallow: /8028f.html
 ```
 8028f.htmlがDisallowと記述されているので、8028f.htmlのページが見られたくないのだろう。  
 <br>
-そこで、8028f.htmlのページにアクセスしてみる。URLは次のようになる。https://jupiter.challenges.picoctf.org/problem/60915/8028f.html  
+そこで、8028f.htmlのページにアクセスしてみる。URLは次のようになる。  
+https://jupiter.challenges.picoctf.org/problem/60915/8028f.html  
 <br>
 アクセスしたページに、フラグが記載されていた。
 <br>
