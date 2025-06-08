@@ -30,7 +30,7 @@ Admin Loginページではパスワードを入力する欄とLoginボタンが�
 > ' or 1=1; --
 
 次に、ブラウザーの開発者モードを使用し、ログイン試行時の通信内容を確認した。すると、POSTデータにパスワードとともにdebug=0というデータが付いているのを見つけた。  
-![[challenge-8--figure1.png]]
+![図](picoCTF 2019/figures/challenge-8--figure1.png)
 ログインページのソースコードを見たところ、hidden属性でdebugのinput要素が記載されている。この値を操作することで何かしらの反応が得られると考えられる。  
 そこで、Burp Suiteを利用し、hidden属性になっているinput要素のdebugの値を変更することとした。
 
