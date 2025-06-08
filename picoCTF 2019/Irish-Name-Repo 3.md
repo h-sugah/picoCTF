@@ -30,7 +30,7 @@ Admin Loginページではパスワードを入力する欄とLoginボタンが�
 > ' or 1=1; --
 
 次に、ブラウザーの開発者モードを使用し、ログイン試行時の通信内容を確認した。すると、POSTデータにパスワードとともにdebug=0というデータが付いているのを見つけた。  
-[picoCTF 2019/pictures/challenge-8--figure1.png](https://github.com/h-sugah/picoCTF/blob/main/picoCTF%202019/pictures/challenge-8--figure1.png)
+![challenge-8--figure1.png](https://github.com/h-sugah/picoCTF/blob/main/picoCTF%202019/pictures/challenge-8--figure1.png)
 ログインページのソースコードを見たところ、hidden属性でdebugのinput要素が記載されている。この値を操作することで何かしらの反応が得られると考えられる。  
 そこで、Burp Suiteを利用し、hidden属性になっているinput要素のdebugの値を変更することとした。
 
@@ -42,11 +42,11 @@ Butp Suiteは、PortSwigger社が開発したWebアプリケーションのセ�
 - ブラウザーが起動したら、対象のサイト（https://jupiter.challenges.picoctf.org/problem/40742/）を開き、Admin Loginページまで遷移する。
 - Password欄に「picoCTF」と入力し、「Login」ボタンを押すと、Burp Suiteがリクエストを補足してくれる。
 - Burp Suiteが補足したリクエストの内容で、Debugの値を0から1に変更し「Forward」ボタンを押す。これで改変した内容をサイトに送信する。
-![[challenge-8--figure2.png]]
-![[challenge-8--figure3.png]]
+![challenge-8--figure2.png](https://github.com/h-sugah/picoCTF/blob/main/picoCTF%202019/pictures/challenge-8--figure2.png)
+![challenge-8--figure3.png](https://github.com/h-sugah/picoCTF/blob/main/picoCTF%202019/pictures/challenge-8--figure3.png)
 
 操作した結果、サイトはログイン失敗となったが、入力したパスワードの内容とSQL文の内容が表示された。
-![[challenge-8--figure4.png]]
+![challenge-8--figure4.png](https://github.com/h-sugah/picoCTF/blob/main/picoCTF%202019/pictures/challenge-8--figure4.png)
 ```
 password: picoCTF
 SQL query: SELECT * FROM admin where password = 'cvpbPGS'
