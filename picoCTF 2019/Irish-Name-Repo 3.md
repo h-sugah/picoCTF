@@ -7,6 +7,10 @@ https://play.picoctf.org/practice/challenge/8
 ### Description
 There is a secure website running at https://jupiter.challenges.picoctf.org/problem/40742/ (link) or http://jupiter.challenges.picoctf.org:40742. Try to see if you can login as admin!
 
+<br>
+<br>
+<br>
+<br>
 
 
 ## 解答の過程
