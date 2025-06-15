@@ -11,7 +11,7 @@ I found this cipher in an old book. Can you figure out what it says? Connect wit
 <br>
 
 ## 解答の過程
-問題文で指示されているサイトにncコマンドでアクセスすると、何かの文章のようなテキストが出力される。  
+問題文で指示されているサイトにncコマンドでアクセスすると、何かの文章のようなテキストが出力されます。  
 
 ```
 > nc jupiter.challenges.picoctf.org 32411
@@ -33,30 +33,25 @@ Tn 1508, Ptsatsps Zwttnjxiax tnbjytki ehk xz-cgqwej ylbaql rkhea (g rltxni ol xs
 Gplrfdo’y xpcuso butvlky lpvjlrki tn 1555 gx l cuseitzltoty ol yse lncsz. Yse rthex mllbjd ol yse gqahggpty fce tth snnqtki cemzwaxqj, bay ehk fwpnfmezx lnj yse osoed qptzjcs gwp mocpd hd xegsd ol f xnkrznoh vee usrgxp, wnnnh ify bk itfljcety hizm paim noxwpsvtydkse.
 ```
 
-中央付近のテキストに、フラグのような文字列が記載されているのが分かる。  
+文章の中央付近に、フラグのような文字列が記載されているのが分かります。  
 
 ```
 hgqqpohzCZK{m311a50_0x_a1rn3x3_h1ah3x7g996649}
 ```
 
-始めの4文字がくっついているのが分からないが、「pohzCZK」は「picoCTF」になるはずである。  
-このような、フラグのフォーマットが見られる場合、換字式暗号を使っているものと推測できる。  
-そこで、[CyberChef](https://gchq.github.io/CyberChef/)を利用して変換させてみる。  
-ROT13のレシピでブルートフォースを試してみても、特にフラグになるような文字列が得られなかった。  
-そのため、ヴィジュネル暗号と考えて変換させてみる。  
-<br>
-1文字目がpで、5文字目がCなので、4文字の周期性があるので、暗号キーは4文字だと判断できる。  
-<br>
-[CyberChef](https://gchq.github.io/CyberChef/)のVigenere Decodeを利用し、1文字ずつ入力して文字列の変化を確認していくと、キーが「agfl」で以下のような文字列になった。  
+始めの4文字は良く分からないのですが、「pohzCZK」は「picoCTF」になると考えられます。  
+このようなフラグのフォーマットが見られる場合、換字式暗号を使っているものと推測できます。  
+そこで、[CyberChef](https://gchq.github.io/CyberChef/)を利用して変換させてみました。  
+ROT13のレシピでブルートフォースを試してみました。しかし、フラグになるような文字列は得られませんでした。  
+そのため、ヴィジュネル暗号ではないかと考えて変換させてみます。  
 
-<br>
-<br>
-<br>
-<br>
+### ヴィジュネル暗号
+[ヴィジュネル暗号（Wikipediaのページ）](https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%82%B8%E3%83%A5%E3%83%8D%E3%83%AB%E6%9A%97%E5%8F%B7)が参考になります。  
+この変換表を使って、暗号文から平文を導き出します。  
 
-```
-picoCTF{b311a50_0r_v1gn3r3_c1ph3r7b996649}
-```
+暗号文と平文の「picoCTF」部分を対応付けて見ると、1文字目がpで同じ文字、5文字目がCで同じ文字なので、4文字の周期性があるようです。これで、暗号キーは4文字ではないかと判断できます。  
+
+今度は、[CyberChef](https://gchq.github.io/CyberChef/)のVigenere Decodeレシピを利用し、1文字ずつ入力して文字列が「picoCTF」になる変化を確認していきます。すると、キーが「agfl」になったときに、フラグ文字列が表示されました。  
 
 <br>
 <br>
@@ -64,23 +59,18 @@ picoCTF{b311a50_0r_v1gn3r3_c1ph3r7b996649}
 <br>
 
 ## フラグ
-
-```
-picoCTF{b311a50_0r_v1gn3r3_c1ph3r7b996649}
-```
+> picoCTF{b311a50_0r_v1gn3r3_c1ph3r7b996649}
 
 <br>
 <br>
 
 ## この問題は
-
-ヴィジュネル暗号について学ぶ問題になる。  
+ヴィジュネル暗号について学ぶ問題のようです。  
 
 <br>
 <br>
 
 ## 復号した全文
-
 ```
 It is interesting how in history people often receive credit for things they did not create
 

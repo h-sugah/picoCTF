@@ -11,10 +11,9 @@ Sometimes RSA certificates are breakable
 <br>
 
 ## 解答の過程
-「certificates」をクリックすると、「cert」ファイルをダウンロードすることができる。  
-certファイルは、テキスト形式のファイルであるため、まずはエディターで内容を確認する。  
-<br>
-以下の内容であり、PEM形式の証明書のようである。  
+「certificates」をクリックすると、「cert」ファイルをダウンロードすることができます。  
+certファイルは、テキスト形式のファイルであるため、まずはエディターで内容を確認します。  
+PEM形式の証明書のようです。  
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -32,7 +31,7 @@ q16/S1WLvzg4PsElmv1f
 -----END CERTIFICATE-----
 ```
 
-opensslコマンドを使い、X.509フォーマットにして内容を確認する。  
+まず、opensslコマンドを使い、X.509フォーマットにして内容を確認します。  
 
 ```
 > openssl x509 -in cert -text -noout
@@ -70,13 +69,13 @@ Certificate:
         25:9a:fd:5f
 ```
 
-Public Key Infoのサブジェクトをみると、通常のRSA公開鍵より短いbit数（53bit）であり、Modulusが4966306421059967、Exponentが65537であることが分かる。  
+Public Key Infoのサブジェクトをみると、通常のRSA公開鍵より短いbit数（53bit）であり、Modulusが4966306421059967、Exponentが65537であることが確認できます。  
 
-Hint1を参照すると、「The flag is in the format picoCTF{p,q}」と書かれている。  
-RSA暗号で説明される、n = p * qの関係からpとqを求めれば良いことになる。  
-なお、nはModulusになるので、n=4966306421059967である。  
+Hint1を参照すると、「The flag is in the format picoCTF{p,q}」と書かれています。  
+Modulusはnで現わされるので、RSA暗号で説明される、n = p * qの関係からpとqを求めれば良いことになりそうです。  
 
-Pythonのsympyモジュールを使って素数を導き出すコードを以下のように作成してみた。  
+nからpとqを求めるために、Pythonのsympyモジュールを使って素数を導き出すコードを作成しました。  
+コードは、以下のようになります。  
 
 ```
 from sympy import factorint
@@ -88,13 +87,13 @@ factors = factorint(n)
 print(factors)
 ```
 
-上記のコードを実行すると、以下の結果が出力される。  
+上記のコードを実行すると、以下の結果が出力されます。  
 
 ```
 {73176001: 1, 67867967: 1}
 ```
 
-73176001, 67867967がp, qになり、指定されたフラグフォーマットにする。
+73176001, 67867967をそれぞれp, qとして、指定されたフラグフォーマットにします。  
 
 <br>
 <br>
@@ -102,13 +101,13 @@ print(factors)
 <br>
 
 ## フラグ
-picoCTF{73176001,67867967}  
+> picoCTF{73176001,67867967}  
 
 <br>
 <br>
 
 ## この問題は
-素数に関して学ぶものだと思われる。  
-タイトルのJohn Pollardさんは、数学者とのこと。  
+素数に関して学ぶ問題だと思われます。  
+なお、タイトルのJohn Pollardさんは、数学者とのことです。  
 
 参考：[John Pollard (mathematician)](https://en.wikipedia.org/wiki/John_Pollard_(mathematician))  

@@ -1,20 +1,21 @@
 # asm4
-Author: Sanjay C
+Author: Sanjay C  
 
 ### URL
 https://play.picoctf.org/practice/challenge/5  
 
 ### Description
-What will asm4("picoCTF_724a2") return? Submit the flag as a hexadecimal value (starting with '0x'). NOTE: Your submission for this question will NOT be in the normal flag format. Source
+What will asm4("picoCTF_724a2") return? Submit the flag as a hexadecimal value (starting with '0x'). NOTE: Your submission for this question will NOT be in the normal flag format. Source  
 
+<br>
+<br>
 <br>
 <br>
 
 ## 解答の過程
 
-"source"のリンクをクリックするとソースコードをダウンロードできる。ファイル名は「test.S」になっている。  
-<br>
-エディターでtest.Sを開くと、以下のようなアセンブリー言語のソースコードが記載されている。
+"source"のリンクをクリックするとソースコードをダウンロードできます。ファイル名は「test.S」になっていました。  
+エディターでtest.Sを開くと、以下のようなアセンブリー言語のソースコードが記載されていました。  
 
 ```
 asm4:
@@ -77,14 +78,16 @@ asm4:
 	<+157>:	ret    
 ```
 
-「asm4("picoCTF_724a2")は何を返すか？」という説明なので、上記コードの動作を解析して、"picoCTF_724a2"という文字がどのような出力になるかを調べれば良いことになる。  
-使われているレジスター名と命令の形式から、x86の32ビットスタイルであることが推測できる。  
-しかし、このコードを1行ずつ解析していくのは大変手間がかかる作業になるため、各種サイトを調べてみたところ、GCCにasm関数があることが分かった。  
-アセンブリー言語のソースコードの内容を少し変えることでC言語のコードとして実行できる。  
+「asm4("picoCTF_724a2")は何を返すか？」という説明なので、上記コードの動作を解析して、"picoCTF_724a2"という文字がどのような出力になるかを調べれば良いことになります。  
+
+まず、使われているレジスター名と命令の形式から、x86の32ビットスタイルであることが推測できます。  
+
+しかし、このコードを1行ずつ解析していくのは大変手間がかかる作業になるため、各種サイトを調べてみたところ、GCCにasm関数があることが分かりましたた。  
+アセンブリー言語のソースコードに少し手を加えることでC言語のコードとして実行できるものです。  
 <br>
 参考：[GCCのドキュメントサイト](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html)  
 <br>
-以上の内容をもとにして、C言語で書いたコードが以下になる。  
+以上の内容をもとにして、C言語で書いたコードが以下になります。  
 
 ```
 #include <stdio.h>
@@ -176,16 +179,18 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-大まかな内容としては、ジャンプ命令をラベルに変更し、入力パラメータの名前もレジスター名から変更している。関数のセットアップと解放処理は、コンパイラによって処理されるため、アセンブリー内ではコメントアウトしている。  
-GCCのドキュメントや各種サイトの情報にもとづいて、お作法通りに記述した。  
-<br>
-このC言語コードをsolver.cとして保存し、以下のようにgccコマンドでコンパイルした。  
+
+大まかな内容としては、ジャンプ命令をラベルに変更し、入力パラメータの名前もレジスター名から変更しています。関数のセットアップと解放処理はコンパイラーによって処理されるため、アセンブリー内ではコメントアウトしています。  
+GCCのドキュメントや各種サイトの情報にもとづいて、お作法通りに記述したものになります。  
+
+このC言語コードをsolver.cとして保存し、以下のようにgccコマンドでコンパイルしました。  
 
 ```
 $ gcc -masm=intel -m32 solver.c -o solver
 ```
 
-しかし、以下のエラーが出た。  
+しかし、以下のエラーが出てしまいました。  
+
 ```
 $ gcc -masm=intel -m32 solver.c -o solver
 In file included from solver.c:1:
@@ -194,23 +199,24 @@ In file included from solver.c:1:
       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
 compilation terminated.
 ```
-調べてみたところ、32bit向けのコードをコンパイルするためのライブラリーが足りないようである。  
-そして、gcc-multilibが必要ということが分かったので、インストールする。  
+
+調べてみたところ、32bit向けのコードをコンパイルするためのライブラリーが足りないようです。  
+gcc-multilibが必要ということが分かったので、インストールします。  
 
 ```
 $ sudo apt install gcc-multilib
 ```
 
-gcc-multilibをインストール後、無事にコンパイルできた。  
-作成された実行ファイルsolverを実行する。  
+gcc-multilibをインストール後、無事にコンパイルできました。  
+作成された実行ファイルsolverを実行します。  
 
 ```
 $ ./solver
 0x20c
 ```
 
-この「0x20c」がフラグである。  
-今回の問題は、この値をそのまま入力する内容になっている。  
+この「0x20c」がフラグになります。  
+今回の問題は、「pciCTF{}」を付けず、この値をそのまま入力する内容になっています。  
 
 <br>
 <br>
@@ -218,16 +224,16 @@ $ ./solver
 <br>
 
 ## フラグ
-0x20c
+> 0x20c
 
 <br>
 <br>
 
 ## この問題は
 
-アセンブリーの動作を理解する問題である。  
-生成AIにアセンブリー言語のソースコードを解析してもらい、併せてC言語やPythonで動作するコードも作成してくれる。  
-Pythonのコードでは以下のようになり、この処理が解析できることを求めている問題になる。  
+アセンブリーの動作を理解するための問題のようです。  
+生成AIにアセンブリー言語のソースコードを解析してもらい、併せてC言語やPythonで動作するコードも作成してもらいました。  
+Pythonのコードでは以下のようになりました。この処理をアセンブリー言語から読み取って解析できることを求めている問題ということになります。  
 
 ```
 def asm4(s: str) -> int:
@@ -241,8 +247,6 @@ def asm4(s: str) -> int:
 
     return result
 
-
-# 実行例
 input_str = "picoCTF_724a2"
 output = asm4(input_str)
 
