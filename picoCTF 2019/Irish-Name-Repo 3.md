@@ -51,15 +51,17 @@ Butp Suiteは、PortSwigger社が開発したWebアプリケーションのセ�
 - Password欄に「picoCTF」と入力し、「Login」ボタンを押すと、Burp Suiteがリクエストを補足して待機してくれます。
 - Burp Suiteが補足したリクエストの内容で、Debugの値を0から1に変更し「Forward」ボタンを押します。このようにして改変したリクエストをサイトに送信します。
 
-<br>
+
 ![challenge-8--figure2.png](./pictures/challenge-8--figure2.png)  
-<br>
+（改変前のリクエスト。※23行目にdebug=0と記載されています。）  
+
 ![challenge-8--figure3.png](./pictures/challenge-8--figure3.png)  
-<br>
+（改変後のリクエスト。※23行目でdebug=1にしています。）  
+
 以上の操作を実施した結果、サイトはログイン失敗となりましたが、入力したパスワードの内容とSQL文の内容が表示されました。  
-<br>
+
 ![challenge-8--figure4.png](./pictures/challenge-8--figure4.png)  
-<br>
+
 
 ```
 password: picoCTF
