@@ -5,7 +5,7 @@ Author: zaratec/Danny
 https://play.picoctf.org/practice/challenge/4  
 
 ### Description
-Can you find the robots? https://jupiter.challenges.picoctf.org/problem/60915/ ([link](https://jupiter.challenges.picoctf.org/problem/60915/)) or http://jupiter.challenges.picoctf.org:60915  
+Can you find the robots? https://jupiter.challenges.picoctf.org/problem/60915/ (link) or http://jupiter.challenges.picoctf.org:60915  
 
 <br>
 <br>

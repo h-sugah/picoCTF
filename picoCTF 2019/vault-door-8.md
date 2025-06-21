@@ -5,7 +5,7 @@ Author: Mark E. Haase
 https://play.picoctf.org/practice/challenge/10  
 
 ### Description
-Apparently Dr. Evil's minions knew that our agency was making copies of their source code, because they intentionally sabotaged this source code in order to make it harder for our agents to analyze and crack into! The result is a quite mess, but I trust that my best special agent will find a way to solve it. The source code for this vault is here: [VaultDoor8.java](https://jupiter.challenges.picoctf.org/static/9b13abb1479aa3979db28a9083712663/VaultDoor8.java)  
+Apparently Dr. Evil's minions knew that our agency was making copies of their source code, because they intentionally sabotaged this source code in order to make it harder for our agents to analyze and crack into! The result is a quite mess, but I trust that my best special agent will find a way to solve it. The source code for this vault is here: VaultDoor8.java  
 
 <br>
 <br>
